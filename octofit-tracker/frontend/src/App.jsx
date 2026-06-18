@@ -1,39 +1,26 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import './App.css'
 
-const getBackendBaseUrl = () => {
-  const codespace = import.meta.env.VITE_CODESPACE_NAME
-  if (codespace && typeof codespace === 'string') {
-    return `https://${codespace}-8000.app.github.dev/api`
-  }
-
-  return 'http://localhost:8000/api'
-}
-
 const App = () => {
-  const backendUrl = getBackendBaseUrl()
+  // VITE_CODESPACE_NAME=your-codespace-name
+  // Use Codespaces name to build backend URL in components.
 
   return (
     <div className="app-shell">
       <header>
         <h1>OctoFit Tracker</h1>
         <p>
-          Frontend is configured to use <code>VITE_CODESPACE_NAME</code> in{' '}
-          <code>.env.local</code> for Codespaces.
+          Frontend uses <code>VITE_CODESPACE_NAME</code> to target a Codespaces
+          backend when available.
         </p>
-        <p>
-          If <code>VITE_CODESPACE_NAME</code> is not set, the frontend falls back
-          to <code>http://localhost:8000/api</code>.
-        </p>
-        <p>Backend base URL: <code>{backendUrl}</code></p>
       </header>
 
       <nav>
-        <NavLink to="/users">Users</NavLink>
-        <NavLink to="/activities">Activities</NavLink>
-        <NavLink to="/teams">Teams</NavLink>
-        <NavLink to="/leaderboard">Leaderboard</NavLink>
-        <NavLink to="/workouts">Workouts</NavLink>
+        <Link to="/users">Users</Link>
+        <Link to="/activities">Activities</Link>
+        <Link to="/teams">Teams</Link>
+        <Link to="/leaderboard">Leaderboard</Link>
+        <Link to="/workouts">Workouts</Link>
       </nav>
 
       <main>
