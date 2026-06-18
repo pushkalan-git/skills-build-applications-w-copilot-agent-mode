@@ -21,6 +21,10 @@ const App = () => {
           Frontend is configured to use <code>VITE_CODESPACE_NAME</code> in{' '}
           <code>.env.local</code> for Codespaces.
         </p>
+        <p>
+          If <code>VITE_CODESPACE_NAME</code> is not set, the frontend falls back
+          to <code>http://localhost:8000/api</code>.
+        </p>
         <p>Backend base URL: <code>{backendUrl}</code></p>
       </header>
 

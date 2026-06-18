@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 
 const buildApiUrl = (endpoint) => {
   const codespace = import.meta.env.VITE_CODESPACE_NAME
-  if (codespace) {
-    return `https://${codespace}-8000.app.github.dev/api/${endpoint}`
-  }
+  const prefix = codespace
+    ? `https://${codespace}-8000.app.github.dev/api`
+    : 'http://localhost:8000/api'
 
-  return `http://localhost:8000/api/${endpoint}`
+  return `${prefix}/${endpoint}/`
 }
 
 const Workouts = () => {
